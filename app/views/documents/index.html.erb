@@ -1,0 +1,52 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h2><b>Pastas</b></h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Conteúdo</th>
+      <th>Exibir</th>
+      <th>Editar</th>
+      <th>Remover</th>
+
+
+
+
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @documents.each do |document| %>
+      <tr>
+        <td><%= document.title %></td>
+
+        <td>
+          
+
+            <% document.contents.each_with_index do |document, index| %>
+                  <%= link_to("Anexo #{index + 1} ", document.url, target: '_blank') %>
+                  <br />
+            <% end %>        
+
+
+        </td>
+
+        <td><%= button_to 'Exibir', document, method: :get  %></td>
+        
+        <td><%= button_to 'Editar', edit_document_path(document), method: :get  %></td>
+        
+        <td><%= button_to "Remover", document, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= button_to 'Nova Pasta', new_document_path, method: :get  %>

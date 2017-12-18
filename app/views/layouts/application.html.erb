@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pds</title>
+
+    
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
+
+  </head>
+
+  <body>
+    
+    <% if duser_signed_in? %>
+        <%= nav_bar brand: "DigiPasta", brand_link: root_url do %>
+              <%= form_tag busca_doc_path,
+                  method: :get,
+                  class: "navbar-form navbar-right" do %>
+                  <div class="form-group">
+                      <%= text_field_tag :title, nil, class: "form-control" %>
+                      <%= button_to "Buscar", nil, class: "btn btn-default" %>
+                  </div>
+              <% end %>
+          <% end %>
+        
+
+
+            <div class="container">
+              <div class="jumbotron">
+                <table>
+                  <thead>
+                      <tr>
+                          <th>Usuário: &nbsp;</th>
+                          <th><b>
+                              <%= current_duser.email %>
+                          </th></b>         
+                      </tr>
+                      
+                      <tr>
+                          <th><%= link_to "Editar", edit_duser_registration_path %></th>
+                          </th>         
+                      </tr>
+                      <tr>
+                          <th><%= link_to "Sair", destroy_duser_session_path, method: :delete %></th>         
+                      </tr>
+                      
+                      </thead>
+                </table>
+              </div>
+            </div>
+
+
+    <% else %>
+
+
+        <%= nav_bar brand: "DigiPasta", brand_link: root_url %>
+    
+
+    <% end %>
+    
+    <div class="container">
+      <div class="jumbotron">
+          <%= yield %>
+      </div>
+    </div>
+  
+  </body>
+</html>

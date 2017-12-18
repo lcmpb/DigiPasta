@@ -1,0 +1,39 @@
+
+<div class="container" style="margin-top:30px ">
+<div class="">
+<div class="panel panel-default">
+<div class="panel-heading"><h3 class="panel-title"><strong>Inscrever-se </strong></h3></div>
+<div class="panel-body">
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :senha %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> mínimo de caracteres)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :senha_confirmação %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Inscrever-se", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+
+
+</div>
+</div>
+</div> 

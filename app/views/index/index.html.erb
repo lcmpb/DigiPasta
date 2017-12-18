@@ -1,0 +1,13 @@
+<h1>Login</h1>
+
+<%= duser_signed_in? %>
+<ul>
+	<li><%= link_to "Novo", new_duser_registration_path %></li>
+	<li><%= link_to "Logar", duser_session_path %></li>
+	<li><%= link_to "Sair", destroy_duser_session_path, method: :delete %></li>	
+</ul>
+
+<ul>
+	<li><%= link_to "Users", users_path %></li>
+	<li><%= link_to "Documents", documents_path %></li>	
+</ul>
